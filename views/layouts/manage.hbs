@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel='stylesheet' href='/stylesheets/app.css' />
+  </head>
+  <body>
+
+    <div class="justify-center bg-MypalePink hidden lg:flex border-t border-gray-400">
+      <ul class="flex items-center text-base">
+          <li class="{{#if (eq activeNav 1)}}activeNav{{/if}}"><a href="/adminCategory"><button class="py-3 px-10 hover:bg-white">Thể loại</button></a></li>
+          <li class="{{#if (eq activeNav 2)}}activeNav{{/if}}"><a href="/adminProduct"><button class="py-3 px-10 hover:bg-white">Sản phẩm</button></a></li>
+          <li class="{{#if (eq activeNav 3)}}activeNav{{/if}}"><a href="/adminOrder"><button class="py-3 px-10 hover:bg-white">Đơn hàng</button></a></li>
+          <li class="{{#if (eq activeNav 4)}}activeNav{{/if}}"><a href="/adminRevenue"><button class="py-3 px-10 hover:bg-white">Doanh thu</button></a></li>
+      </ul>
+    </div>
+
+    <div class="min-h-screen">
+    {{{body}}}
+    </div>
+
+    <div class="bg-MypalePink" id="footer">
+        <div class="py-1">
+            <div class="text-5xl text-MydarkYellow font-bold pt-2 mx-auto w-fit">moho<span>.</span></div>
+        </div>
+    </div>
+  </body>
+  <script src="/javascripts/main.js"></script>
+</html>

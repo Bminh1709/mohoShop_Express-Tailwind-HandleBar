@@ -1,0 +1,95 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'League Spartan', sans-serif;
+}
+.banner {
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 60%), rgb(255 255 255 / 4%)), url(/images/system/banner.jpg);
+    background-size: cover;
+}
+#mobile-navbar:checked ~ .nav__overlay {
+    display: block;
+}
+.responsive-navbar {
+    transition: transform 0.3s ease;
+}
+#mobile-navbar:checked ~ .responsive-navbar {
+    transform: translateX(0);
+}
+.vision__img {
+    height: 500px;
+    width: 500px;
+    object-fit: cover;
+}
+.access-background {
+    background: linear-gradient(to left, rgba(0, 0, 0, 60%), rgb(255 255 255 / 4%)), url(/images/system/white-girl.jpg);
+    background-size: cover;
+}
+#ckbChangeForm:checked ~ .signup-container {
+    transform: translateX(0);
+    opacity: 1;
+}
+#ckbChangeForm:checked ~ .signin-container {
+    transform: translateX(100%);
+    opacity: 0;
+    margin-right: 0;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.tab-content {
+    display: none;
+    padding: 15px;
+}
+
+/* Style for the active tab button and content */
+.active {
+    display: block;
+}
+
+#addProduct:checked ~ .addProduct-overlay {
+    display: block;
+}
+.addProduct-form {
+    transform: translateY(-100%);
+}
+#addProduct:checked ~ .addProduct-form {
+    transform: translateY(10%);
+}
+
+.addCategory-form {
+    transform: translateY(-100%);
+}
+#addCategory:checked ~ .addCategory-overlay {
+    display: block;
+}
+#addCategory:checked ~ .addCategory-form {
+    transform: translateY(100%);
+}
+
+#hotProduct:checked ~ .hotProduct-overlay {
+    display: block;
+}
+.hotProduct-form {
+    transform: translateY(-100%);
+}
+#hotProduct:checked ~ .hotProduct-form {
+    transform: translateY(10%);
+}
+
+.activeNav {
+    background-color: white;
+}
+@media (max-height: 650px) { 
+    .vision__img {
+        height: 500px;
+        width: 500px;
+    }
+}
+@media (max-height: 500px) { 
+    .vision__img {
+        height: 370px;
+        width: 370px;
+    }
+}

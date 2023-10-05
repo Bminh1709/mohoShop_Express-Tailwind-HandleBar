@@ -1,0 +1,84 @@
+<div class="w-full p-10">
+    <div class="flex items-center justify-end gap-4">
+        <a href=""><i class="fa-regular fa-bell text-xl text-MydarkYellow"></i></a>
+        <a href=""><i class="fa-regular fa-message text-xl text-MydarkYellow"></i></a>
+        <img class="w-12 h-12 object-cover rounded-full" src="/images/btt1.jpg" alt="">
+    </div>
+
+    {{#if addAction}}
+
+    <div class="mt-10 flex justify-end gap-2">
+        <label for="addCategory" class="py-2 px-5 border rounded-md border-MydarkYellow hover:bg-MydarkYellow hover:text-white hover:cursor-pointer">
+            Thêm loại
+        </label>
+    </div>
+
+    <div>
+        <input hidden type="checkbox" id="addCategory" class="">
+        <div for="addCategory" class="h-fit addCategory-form w-fit px-10 py-7 fixed top-0 bottom-0 left-[36%] z-20 bg-MyPink rounded-xl">
+            <p class="text-2xl font-bold w-fit mx-auto text-MydarkYellow mb-3">Thêm loại</p>
+            <form action="/adminCategory" method="post" class="w-[300px]">
+                <label class="text-gray-600 text-sm" for="">Tên loại</label>
+                <input required name="category" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text">
+                <button type="submit" class="py-2 px-6 rounded-lg bg-MydarkYellow text-white hover:bg-black hover:text-MydarkYellow">Thêm</button>
+            </form>
+        </div>
+        <label hidden for="addCategory" class="bg-gray-600 opacity-50 fixed top-0 left-0 right-0 bottom-0 addCategory-overlay z-10"></label>
+    </div>
+
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+        <table class="w-full text-xs text-left text-gray-500 ">
+            <thead class="text-sm text-gray-700 uppercase bg-gray-50 ">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Id
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Tên loại
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Update
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each categories}}
+                <tr class="bg-white border-b">
+                    <td class="px-6 py-3 text-black font-medium">
+                        {{id}}
+                    </td>
+                    <td class="px-6 py-3">
+                        {{categoryname}}
+                    </td>
+                    <td class="px-6 py-3 w-10 text-center">
+                        <a href="/adminCategory/update/{{id}}" class="font-medium text-blue-600"><i class="fa-solid fa-pen-to-square text-base"></i></a>
+                    </td>
+                    <td class="px-6 py-3 w-10 text-center">
+                        <a href="/adminCategory/delete/{{id}}" class="font-medium text-red-600"><i class="fa-solid fa-trash text-base"></i></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+
+    {{else}}
+
+    <p class="text-2xl font-bold w-fit mx-auto text-MydarkYellow mb-3">Thêm loại</p>
+    <form action="" method="post" class="w-[300px] mx-auto">
+    {{#each category}}
+        <label class="text-gray-600 text-sm" for="">Tên loại</label>
+        <input name="category" value="{{categoryname}}" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text">
+        <button type="submit" class="py-1 px-4 rounded-lg bg-MydarkYellow text-white hover:bg-black hover:text-MydarkYellow">Thêm</button>
+    {{/each}}
+    </form>
+
+    {{/if}}
+
+    
+</div>

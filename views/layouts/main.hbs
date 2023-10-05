@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel='stylesheet' href='/stylesheets/app.css' />
+  </head>
+  <body>
+
+        <div class="flex items-center justify-between bg-white">
+            <label for="mobile-navbar" class="ml-6 lg:hidden"><i class="fa-solid fa-bars text-xl hover:cursor-pointer"></i></label>
+            <a href="/profile" class="ml-6 hidden lg:block"><i class="fa-regular fa-heart text-xl"></i></a>
+            <a href="/" class="text-5xl text-MydarkYellow font-bold pt-2">moho<span class="text-black">.</span></a>
+            <a href="/profile" class="mr-6"><i class="fa-regular fa-user text-xl"></i></a>
+        </div>
+
+
+    <div>
+    {{{body}}}
+    </div>
+
+    <div class="bg-MypalePink" id="footer">
+        <div class="py-10">
+            <h1 class="text-2xl mx-auto font-medium w-fit mb-7">Bạn xứng đáng được phục vụ tốt hơn</h1>
+            <div class="flex flex-col sm:flex-row justify-around mx-auto w-full lg:w-4/5 gap-5 sm:gap-3">
+                <div class="w-3/4 sm:w-1/3 mx-auto">
+                    <p class="text-xl mb-3 text-gray-700">Sứ mệnh</p>
+                    <p class="text-gray-700">Sứ mệnh nhà moho là mang đến cho khách hàng sự hoàn mỹ, moho cam kết mang đến cho bạn những sản phẩm tuyệt vời nhất với mức giá cạnh tranh. Hứa hẹn sẽ cho bạn một trải nghiệm xứng đáng nhất.</p>
+                    <div class="flex items-center gap-1 mt-2">
+                        <a href=""><img class="h-8 w-8" src="/images/system/shopeeLogo.png" alt="shopee logo"></a>
+                        <a href=""><img class="h-7 w-7" src="/images/system/LazadaLogo.png" alt="shopee logo"></a>
+                    </div>
+                </div>
+                <div class="mx-auto">
+                    <p class="text-xl mb-3 text-gray-700">Thông tin liên lạc</p>
+                    <div class="flex flex-col gap-2 text-gray-700">
+                        <div class="flex gap-3">
+                            <img class="h-5 w-5" src="/images/system/phoneLogo.png" alt="phone logo">
+                            <p class="">056 515 6495</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <img class="h-5 w-5" src="/images/system/phoneLogo.png" alt="phone logo">
+                            <p class="">070 616 2561</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <img class="h-5 w-5" src="/images/system/mapLogo.png" alt="address logo">
+                            <p class="">Lê Tấn Trung, Thọ Quang, Sơn Trà</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <img class="h-5 w-5" src="/images/system/mailLogo.png" alt="mail logo">
+                            <p class="">mohowhitebeauty@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <iframe class="w-full md:w-[280px] xl:w-[350px] h-[300px]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.373293399561!2d108.24592827468474!3d16.097979138668492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314217fadc4bde37%3A0xf1ab3d43037a6f20!2zWeG6v24gVGjDoG5oIDI!5e0!3m2!1svi!2s!4v1693576547592!5m2!1svi!2s" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    
+        <div class="border-t border-gray-400 py-1">
+            <div class="text-5xl text-MydarkYellow font-bold pt-2 mx-auto w-fit">moho<span class="text-black">.</span></div>
+        </div>
+    </div>
+  </body>
+  <script src="/javascripts/main.js"></script>
+</html>

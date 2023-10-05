@@ -1,0 +1,271 @@
+
+<div class="w-full p-10">
+    <div class="flex items-center justify-end gap-4">
+        <a href=""><i class="fa-regular fa-bell text-xl text-MydarkYellow"></i></a>
+        <a href=""><i class="fa-regular fa-message text-xl text-MydarkYellow"></i></a>
+        <img class="w-12 h-12 object-cover rounded-full" src="/images/system/btt1.jpg" alt="">
+    </div>
+
+    {{#if addAction}}
+
+    <div class="mt-10 flex justify-between items-center gap-2 h-10">
+        <form action="/admin" class="w-full md:w-1/4 h-full relative border border-gray-300">
+            <input name="filter" class="w-full outline-none h-full px-4 rounded-sm text-sm" type="text" value="{{filter}}">
+            <button type="submit" class="absolute top-0 right-0 h-full w-14 lg:w-14 border-4 border-white bg-MyPink flex justify-center items-center hover:cursor-pointer hover:bg-MydarkYellow">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+        <div class="flex items-center gap-3">
+            <label for="hotProduct" class="py-2 px-5 border rounded-md border-MydarkYellow hover:bg-MydarkYellow hover:text-white hover:cursor-pointer">
+                Cập nhật sản phẩm hot
+            </label>
+            <label for="addProduct" class="py-2 px-5 border rounded-md border-MydarkYellow hover:bg-MydarkYellow hover:text-white hover:cursor-pointer">
+                Thêm sản phẩm
+            </label>
+        </div>
+    </div>
+
+    <div>
+        <input hidden type="checkbox" id="hotProduct" class="">
+        <div for="hotProduct" class="h-fit hotProduct-form w-1/2 px-10 py-7 fixed top-0 bottom-0 left-[25%] z-20 bg-MyPink rounded-xl">
+            <p class="text-2xl font-bold w-fit mx-auto text-MydarkYellow mb-3">Sản phẩm nổi bật</p>
+            <table class="w-full text-xs text-left text-gray-500 ">
+                <thead class="text-sm text-gray-700 uppercase bg-gray-50 ">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Ảnh
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Tên
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-center">
+                            Nổi bật
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each hotproducts}}
+                    <tr class="bg-white border-b">
+                        <td class="px-6 py-3 w-fit">
+                            <img class="w-20 h-20 object-cover" src="/images/product/{{split image ',' 0}}" alt="">
+                        </td>
+                        <td class="px-6 py-3 text-black font-medium w-1/2">
+                            {{productname}}
+                        </td>
+                        <td class="px-6 py-3 w-28 text-center">
+                            <a href="/admin/product/hot/{{productid}}" class="font-medium text-red-600"><i class="fa-solid fa-fire text-lg"></i></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <label hidden for="hotProduct" class="bg-gray-600 opacity-50 fixed top-0 left-0 right-0 bottom-0 hotProduct-overlay z-10"></label>
+    </div>
+
+    <div>
+        <input hidden type="checkbox" id="addProduct" class="">
+        <div for="addProduct" class="h-fit addProduct-form w-fit px-10 py-7 fixed top-0 bottom-0 left-[22%] z-20 bg-MyPink rounded-xl">
+            <p class="text-2xl font-bold w-fit mx-auto text-MydarkYellow mb-3">Thêm sản phẩm</p>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="flex gap-5">
+                    <div class="w-[200px]">
+                        <div>
+                            <label class="text-gray-600 text-sm" for="">Tên sản phẩm</label>
+                            <input required name="productname" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600 text-sm" for="">Loại</label>
+                            <select name="category" id="" class="text-sm px-2 py-3  border border-gray-300 focus:border-MydarkYellow focus:outline-none">
+                                {{#each categories}}
+                                    <option class="text-xs" value="{{categoryid}}">{{categoryname}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-gray-600 text-sm" for="">Giá</label>
+                            <input required name="discountprice" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="number">
+                        </div>
+                        <div>
+                            <label class="text-gray-600 text-sm" for="">Giá gốc</label>
+                            <input required name="price" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="number">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600 text-sm" for="">Hình ảnh</label>
+                            <input class="text-sm" type="file" name="image" multiple required accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="w-[500px]">
+                        <div>
+                            <label class="text-gray-600 text-sm" for="">Mô tả ngắn</label>
+                            <textarea name="description" rows="3" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-gray-600 text-sm" for="">Chi tiết sản phẩm</label>
+                            <textarea name="detaildescription" rows="10" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none resize-none"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-fit mx-auto mt-5">
+                    <button type="submit" class="py-2 px-6 rounded-lg bg-MydarkYellow text-white hover:bg-black hover:text-MydarkYellow">Thêm</button>
+                </div>
+            </form>
+        </div>
+        <label hidden for="addProduct" class="bg-gray-600 opacity-50 fixed top-0 left-0 right-0 bottom-0 addProduct-overlay z-10"></label>
+    </div>
+    
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+        <table class="w-full text-xs text-left text-gray-500 ">
+            <thead class="text-sm text-gray-700 uppercase bg-gray-50 ">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Ảnh
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Tên
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Loại
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Giá
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Giá gốc
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Mô tả ngắn
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Hot
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Update
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr class="bg-white border-b">
+                    <td class="px-6 py-3 w-32">
+                        <img class="w-20 h-20 object-cover" src="/images/product/{{split image ',' 0}}" alt="">
+                    </td>
+                    <td class="px-6 py-3 text-black font-medium w-1/6">
+                        {{productname}}
+                    </td>
+                    <td class="px-6 py-3">
+                        {{categoryname}}
+                    </td>
+                    <td class="px-6 py-3">
+                        {{price}}
+                    </td>
+                    <td class="px-6 py-3">
+                        {{discountprice}}
+                    </td>
+                    <td class="px-6 py-3 w-1/4">
+                        {{description}}
+                    </td>
+                    <td class="px-6 py-3 w-10 text-center">
+                        {{#if hot}}
+                        <a href="/admin/product/hot/{{productid}}" class="font-medium text-red-600"><i class="fa-solid fa-fire text-lg"></i></a>
+                        {{else}}
+                        <a href="/admin/product/hot/{{productid}}" class="font-medium text-gray-700"><i class="fa-solid fa-fire text-lg"></i></a>
+                        {{/if}}
+                    </td>
+                    <td class="px-6 py-3 w-10 text-center">
+                        <a href="/admin/product/update/{{productid}}" class="font-medium text-blue-600"><i class="fa-solid fa-pen-to-square text-lg"></i></a>
+                    </td>
+                    <td class="px-6 py-3 w-10 text-center">
+                        <a href="/admin/product/delete/{{productid}}" class="font-medium text-red-700"><i class="fa-solid fa-trash text-lg"></i></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    {{else}}
+
+    <div class="w-full p-5 my-10 flex gap-3 shadow-xl">
+        <div class="">
+            <p class="w-fit mx-auto text-MydarkYellow font-semibold text-2xl mb-3">Ảnh</p>
+            <div class="p-2 border border-gray-200 h-[500px] overflow-y-scroll gap-1 flex flex-col">
+                {{#each (splitImgs product.image ',')}}
+                    <img class="w-36 h-36 object-cover" src="/images/product/{{this}}" alt="Ảnh sản phẩm">
+                {{/each}}
+            </div>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data" class="w-4/5 mx-auto">
+            <p class="w-fit mx-auto text-MydarkYellow font-semibold text-2xl mb-3">Chỉnh sửa sản phẩm</p>
+            <div class="flex gap-5">
+                <div class="w-[500px]">
+                    <div>
+                        <label class="text-gray-600 text-sm" for="">Tên sản phẩm</label>
+                        <input name="productname" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text" value="{{product.productname}}">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-gray-600 text-sm" for="">Loại</label>
+                        <select name="category" id="" class="text-sm px-2 py-3  border border-gray-300 focus:border-MydarkYellow focus:outline-none">
+                            {{#each categories}}
+                                <option class="text-xs" {{#if (eq categoryid ../product.category_id)}}selected{{/if}} value="{{categoryid}}">{{categoryname}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-gray-600 text-sm" for="">Giá</label>
+                        <input name="price" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="number" value="{{product.price}}">
+                    </div>
+                    <div>
+                        <label class="text-gray-600 text-sm" for="">Giá gốc</label>
+                        <input name="discountprice" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="number" value="{{product.discountprice}}">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-gray-600 text-sm" for="">Hình ảnh</label>
+                        <input class="text-sm" type="file" name="image" multiple accept="image/*">
+                    </div>
+                </div>
+
+                <div class="w-full">
+                    <div>
+                        <label class="text-gray-600 text-sm" for="">Mô tả ngắn</label>
+                        <textarea name="description" rows="3" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none resize-none">{{product.description}}</textarea>
+                    </div>
+                    <div>
+                        <label class="text-gray-600 text-sm" for="">Chi tiết sản phẩm</label>
+                        <textarea name="detaildescription" rows="10" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none resize-none">{{product.detaildescription}}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="w-fit mx-auto mt-5">
+                <button type="submit" class="py-2 px-6 rounded-lg bg-MydarkYellow text-white hover:bg-black hover:text-MydarkYellow">Chỉnh sửa</button>
+            </div>
+        </form>
+    </div>
+
+
+    {{/if}}
+
+
+</div>
+
+
+<script>
+        const errorMessage = document.getElementById('messageAddProduct');
+        function fadeOut(el) {
+            var opacity = 1; // Initial opacity
+            var interval = setInterval(function() {
+               if (opacity > 0) {
+                  opacity -= 0.1;
+                  el.style.opacity = opacity;
+               } else {
+                  clearInterval(interval); // Stop the interval when opacity reaches 0
+                  el.style.display = 'none'; // Hide the element
+               }
+            }, 400);
+         }
+         fadeOut(errorMessage);
+    </script>

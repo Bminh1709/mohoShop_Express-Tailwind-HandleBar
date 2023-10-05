@@ -1,0 +1,133 @@
+<div class="bg-gray-100 h-fit py-7">
+
+    {{#each product}}
+    
+    <div class="w-11/12 xl:w-4/5 mx-auto">
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+            <a class="hover:underline" href="/">Trang chủ</a>
+            <i class="fa-solid fa-angle-right"></i>
+            <a>{{categoryname}}</a>
+            <i class="fa-solid fa-angle-right"></i>
+            <a class="last:text-black font-medium">{{productname}}</a>
+        </div>
+    </div>
+
+    <div class="w-11/12 xl:w-4/5 mx-auto bg-white mt-4 p-5">
+        <div class="w-full h-fit flex flex-col sm:flex-row gap-5">
+            <div class="w-full sm:min-w-[250px] sm:w-[250px] md:min-w-[350px] md:w-[350px] lg:min-w-[450px] lg:w-[450px]">
+                <img src="/uploads/{{split image ',' 0}}" alt="" class="h-full sm:h-[250px] md:h-[350px] lg:h-[450px] object-cover">
+                <div class="flex gap-2 mt-4 relative">
+                    {{!-<div class="absolute bg-gray-300 h-7 w-5 md:h-10 md:w-6 flex items-center justify-center top-5 opacity-70 hover:opacity-100 hover:cursor-pointer">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </div> --}}
+                    <div class="flex gap-2 overflow-x-scroll  w-full"> 
+                        {{#each (splitImgs image ',')}}
+                            <img src="/uploads/{{this}}" alt="" class="w-16 h-16 md:w-20 md:h-20">
+                        {{/each}}
+                    </div>
+                    {{!-<div class="absolute right-0 bg-gray-300 h-7 w-5 md:h-10 md:w-6 flex items-center justify-center top-5 opacity-70 hover:opacity-100 hover:cursor-pointer">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div> --}}
+                </div>
+                <div class="flex flex-col md:flex-row justify-evenly py-4 border-y border-gray-200 mt-4">
+                    <div class="flex gap-1 items-center mx-auto md:mx-0">
+                        <p class="text-gray-500 text-sm">Chia sẽ:</p>
+                        <a href=""><img class="w-6 h-6" src="/images/Facebook-logo.png" alt=""></a>
+                        <a href=""><img class="w-6 h-6" src="/images/google-icon.png" alt=""></a>
+                        <a href=""><img class="w-6 h-6" src="/images/mailLogo.png" alt=""></a>
+                    </div>
+                    <div class="h-0.5 w-full md:h-7 md:w-0.5 bg-gray-100 mx-auto md:mx-0 my-3 md:my-0"></div>
+                    <div class="flex gap-1 text-sm items-center mx-auto md:mx-0">
+                        <p class="text-gray-500">Lượt xem:</p>
+                        <p>Đang tính...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-3 w-full">
+                <div class="w-fit rounded-2xl bg-gray-200 flex items-center gap-1 px-1">
+                    <i class="fa-solid fa-circle-check text-blue-600 text-xl"></i>
+                    <p class="text-blue-600 text-sm">Chính hãng</p>
+                </div>
+                <p class="text-2xl">{{productname}}</p>
+                <div class="flex gap-1">
+                    <p class="text-gray-600">Loại:</p>
+                    <p>{{categoryname}}</p>
+                </div>
+                <div class="w-full bg-gray-200 p-5 flex">
+                    <p class="text-2xl font-semibold">{{formatCurrency discountprice}}đ</p>
+                    <p class="line-through text-red-700 text-sm ml-2">{{formatCurrency price}}đ</p>
+                </div>
+                <p class="flex flex-wrap text-gray-700">{{description}}</p>
+                <div class="mt-5">
+                    <p class="text-sm mb-1">Số lượng</p>
+                    <div>
+                        <button class="w-7 h-full bg-gray-200 hover:bg-gray-400" id="qtyminus" onclick="minus()">-</button>
+                        <input class="w-10 text-center outline-none" type="text" readonly name="" value="1" id='quantity'>
+                        <button class="w-7 h-full bg-gray-200 hover:bg-gray-400" id="qtyplus" onclick="plus()">+</button>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <a href="/cart/{{id}}" class="border border-MydarkYellow py-2 px-3 lg:px-5 hover:bg-MypaleYellow hover:text-white">Thêm vào giỏ hàng</a>
+                    <button class="bg-MydarkYellow text-white py-2 px-4 lg:px-7 hover:border border-MydarkYellow hover:bg-white hover:text-black">Mua hàng</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="w-full mt-10">
+            <div class="border-b border-gray-300 flex flex-col sm:flex-row">
+                <button class="py-2 px-5 text-base" onclick="showTab('info')" id="product-info">Thông tin sản phẩm</button>
+                <button class="py-2 px-5 text-base" onclick="showTab('guide')" id="product-guide">Hướng dẫn mua hàng</button>
+                <button class="py-2 px-5 text-base" onclick="showTab('policy')" id="product-policy">Chính sách</button>
+            </div>
+            <div>
+                <div class="tab-content" id="info">
+                    {{detaildescription}}
+                </div>
+                <div class="tab-content text-sm" id="guide">
+                    Đọc thêm chính sách thanh toán tại mục "Chính sách"<br>
+                    <br>
+                    <span class="font-medium text-base">Mua hàng tại website moho:</span><br>
+                    Bước 1: Chọn sản phẩm và bấm nút "Thêm vào giỏ hàng" hoặc "Mua hàng"<br>
+                    Bước 2: Gửi số tiền sản phẩm tương ứng trên màn hình qua tài khoản ngân hàng<br>
+                    Bước 3: Sản phẩm sẽ được gửi đi sau khi thanh toán thành công<br>
+                    <br>
+                    <span class="font-medium text-base">Mua hàng thông qua các nền tảng mua sắm:</span><br>
+                    Shopee: <a class="hover:underline text-blue-700" href="">Nhấn vào đây</a><br>
+                    Lazada: <a class="hover:underline text-blue-700" href="">Nhấn vào đây</a><br>
+                    Chợ tốt: <a class="hover:underline text-blue-700" href="">Nhấn vào đây</a><br>
+                    <br>
+                    <span class="font-medium text-base">Mua hàng thông qua số điện thoại:</span><br>
+                    Số điện thoại: 0706162561<br>
+                    Số điện thoại: 056 515 6495<br>
+                    Gmail: mohowhitebeauty@gmail.com<br>
+                    <br>
+                    Chi tiết liên hệ: mohowhitebeauty@gmail.com - 0706162561
+                </div>
+                <div class="tab-content text-sm" id="policy">
+                    <span class="font-medium text-base">Chính sách thanh toán:</span><br>
+                    Có 3 hình thức thanh toán, khách hàng có thể lựa chọn hình thức thuận tiện và phù hợp với mình nhất:<br>
+                    Cách 1: Thanh toán tiền mặt trực tiếp địa chỉ của chúng tôi<br>
+                    Cách 2: Thanh toán khi nhận hàng (COD), khách hàng xem hàng tại nhà, thanh toán tiền mặt cho nhân viên giao nhận hàng.<br>
+                    Cách 3: Chuyển khoản trước. Quý khách chuyển khoản trước, sau đó chúng tôi tiến hành giao hàng theo thỏa thuận hoặc hợp đồng với Quý khách.<br>
+                    <br>
+                    <span class="font-medium text-base">Chính sách xử lý khiếu nại:</span><br>
+                    Tiếp nhận mọi khiếu nại của khách hàng liên quan đến việc sử dụng dịch vụ của công ty.<br>
+                    Tất cả mọi trường hơp bảo hành, quý khách có thể liên hệ với chúng tôi để làm thủ tục bảo hành.<br>
+                    Thời gian giải quyết khiếu nại trong thời hạn tối đa là 03 (ba) ngày làm việc kể từ khi nhận được khiếu nại của của khách hàng. Trong trường hợp bất khả kháng 2 bên sẽ tự thương lượng.<br>
+                    <br>
+                    <span class="font-medium text-base">Chính sách đổi trả:</span><br>
+                    Sản phẩm mua rồi nhưng không ưng ý.<br>
+                    Sản phẩm mua bị lỗi – Quá hạn sử dụng.<br>
+                    Sản phẩm giao không đúng theo đơn đặt hàng.<br>
+                    <br>
+                    Chi tiết liên hệ: mohowhitebeauty@gmail.com - 0706162561
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{/each}}
+
+</div>

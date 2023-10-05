@@ -1,0 +1,29 @@
+<form action="" method="post" class="access-background h-screen flex justify-end items-center overflow-hidden relative">
+    <div class="signin-container custom-boxShadow bg-white grid grid-cols-1 w-full sm:w-[400px] h-fit p-8 mx-auto absolute sm:mr-[15%] opacity-100">
+        <div class="text-2xl mb-3 font-medium text-MydarkYellow">Đăng nhập quản trị</div>
+        <div class="">
+            <div><input class="border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text" name="username" placeholder="Tài khoản" required></div>
+            <div class="relative"><input id="passwordInput" class="border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="password" name="password" placeholder="Mật khẩu" required><i id="showPassword" class="fa-regular fa-eye absolute right-3 top-4 text-gray-500 hover:text-black"></i></div>
+            <div><input class="p-2 my-1 bg-MypaleYellow w-full text-white hover:bg-MyPink hover:text-black hover:cursor-pointer text-base" type="submit" value="Đăng nhập"></div>
+        </div>
+        <p id="errorMessage" class="text-red-500 w-fit mx-auto text-sm mt-3">{{ message }}</p>
+    </div>
+</form>
+
+<script>
+    const errorMessage = document.getElementById('errorMessage');
+    setTimeout(() => {
+            errorMessage.style.display = 'none';
+        }, 2000);
+
+    const passwordInput = document.getElementById('passwordInput');
+    const showPasswordIcon = document.getElementById('showPassword');
+
+    showPasswordIcon.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+</script>

@@ -1,0 +1,86 @@
+<div class="access-background h-screen flex justify-end items-center overflow-hidden relative">
+        <input hidden type="checkbox" name="" id="ckbChangeForm" class="">
+
+        <div hidden class="signup-container bg-white grid grid-cols-1 w-full sm:w-[400px] h-fit p-8 sm:mr-[15%] translate-x-full absolute opacity-0">
+            <div class="text-2xl mb-3 font-medium text-MydarkYellow">Đăng ký</div>
+            <form action="/access/signup" method="post">
+                <div><input name="fullname" class="border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text" placeholder="Tên đầy đủ"></div>
+                <div><input name="gmail" class="border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text" placeholder="Tài khoản gmail"></div>
+                <div><input name="phone" class="border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="number" placeholder="Số điện thoại"></div>
+                <div class="relative"><input name="password" id="passwordInput" class="border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="password" placeholder="Mật khẩu"><i id="showPassword" class="fa-regular fa-eye absolute right-3 top-4 text-gray-500 hover:text-black"></i></div>
+                <div><input class="p-2 my-1 bg-MypaleYellow w-full text-white hover:bg-MyPink hover:text-black hover:cursor-pointer text-base" type="submit" value="Đăng ký"></div>
+            </form>
+            <div class="flex justify-center items-center mt-6 mb-2">
+                <div class="w-full h-[1px] bg-gray-200"></div>
+                <div class="text-gray-600 mx-2">Hoặc</div>
+                <div class="w-full h-[1px] bg-gray-200"></div>
+            </div>
+            <div class="flex gap-3">
+                <div class="border border-gray-300 p-2 w-full flex justify-center hover:bg-MyPink hover:cursor-pointer">
+                    <a class="flex gap-1" href="">
+                        <img class="w-5 h-fit" src="/images/Facebook-logo.png" alt="">
+                        <p>Facebook</p>
+                    </a>
+                </div>
+                <div class="border border-gray-300 p-2 w-full flex justify-center hover:bg-MyPink hover:cursor-pointer">
+                    <a class="flex gap-1" href="">
+                        <img class="w-5 h-fit" src="/images/google-icon.png" alt="">
+                        <p>Google</p>
+                    </a>
+                </div>
+            </div>
+            <div class="text-sm text-gray-500 mx-auto mt-3">Bạn là người bạn cũ của moho? <label class="text-base text-blue-600 font-medium hover:cursor-pointer" for="ckbChangeForm" href="">Đăng nhập</label></div>
+        </div>
+
+        <div class="signin-container custom-boxShadow bg-white grid grid-cols-1 w-full sm:w-[400px] h-fit p-8 mx-auto absolute sm:mr-[15%] opacity-100">
+            <div class="text-2xl mb-3 font-medium text-MydarkYellow">Đăng nhập</div>
+            <form action="/access" method="post">
+                <div><input required name="username" class="border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text" placeholder="Gmail/Số điện thoại"></div>
+                <div class="relative"><input name="password" required id="passwordInput" class="border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="password" placeholder="Mật khẩu"><i id="showPassword" class="fa-regular fa-eye absolute right-3 top-4 text-gray-500 hover:text-black"></i></div>
+                <div><input class="p-2 my-1 bg-MypaleYellow w-full text-white hover:bg-MyPink hover:text-black hover:cursor-pointer text-base" type="submit" value="Đăng nhập"></div>
+            </form>
+            <div class="flex justify-center items-center mt-6 mb-2">
+                <div class="w-full h-[1px] bg-gray-200"></div>
+                <div class="text-gray-600 mx-2">Hoặc</div>
+                <div class="w-full h-[1px] bg-gray-200"></div>
+            </div>
+            <div class="flex gap-3">
+                <div class="border border-gray-300 p-2 w-full flex justify-center hover:bg-MyPink hover:cursor-pointer">
+                    <a class="flex gap-1" href="">
+                        <img class="w-5 h-fit" src="/images/Facebook-logo.png" alt="">
+                        <p>Facebook</p>
+                    </a>
+                </div>
+                <div class="border border-gray-300 p-2 w-full flex justify-center hover:bg-MyPink hover:cursor-pointer">
+                    <a class="flex gap-1" href="">
+                        <img class="w-5 h-fit" src="/images/google-icon.png" alt="">
+                        <p>Google</p>
+                    </a>
+                </div>
+            </div>
+            <div class="text-sm text-gray-500 mx-auto mt-3">Bạn là người đồng hành mới của moho? <label class="text-base text-blue-600 font-medium hover:cursor-pointer" for="ckbChangeForm" href="">Đăng ký</label></div>
+            <p id="errorMessage" class="text-red-500 w-fit mx-auto text-sm mt-3">{{ messageSignIn }}</p>
+        </div>
+    </div>
+
+
+<script>
+    const errorMessage = document.getElementById('errorMessage');
+    setTimeout(() => {
+            errorMessage.style.display = 'none';
+        }, 2000);
+    
+
+    const passwordInput = document.getElementById('passwordInput');
+    const showPasswordIcon = document.getElementById('showPassword');
+
+    showPasswordIcon.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            // Change the input type to text to show the password
+            passwordInput.type = 'text';
+        } else {
+            // Change the input type back to password to hide the password
+            passwordInput.type = 'password';
+        }
+    });
+</script>

@@ -1,0 +1,136 @@
+    <div class="z-10 mt-7">
+        <input hidden type="checkbox" id="mobile-navbar" class="">
+
+        <div class="responsive-navbar fixed top-0 left-0 right-0 bottom-0 z-10 bg-white w-fit p-8 translate-x-[-100%] flex flex-col z-20">
+            <label for="mobile-navbar" class=""><i class="fa-solid fa-xmark text-3xl text-red-600 mb-4 hover:cursor-pointer"></i></label>
+            <a href="/product/1" class="text-lg py-4 pl-4 pr-24 border-b-[2px] border-gray-100 hover:bg-MyPink hover:cursor-pointer">Bông tẩy trang</a>
+            <a href="/product/3" class="text-lg py-4 pl-4 pr-24 border-b-[2px] border-gray-100 hover:bg-MyPink hover:cursor-pointer">Khăn đa năng</a>
+            <a href="/product/2" class="text-lg py-4 pl-4 pr-24 border-b-[2px] border-gray-100 hover:bg-MyPink hover:cursor-pointer">Khăn ướt</a>
+            <a href="/product/5" class="text-lg py-4 pl-4 pr-24 border-b-[2px] border-gray-100 hover:bg-MyPink hover:cursor-pointer">Khẩu trang</a>
+            <a href="/product/4" class="text-lg py-4 pl-4 pr-24 border-b-[2px] border-gray-100 hover:bg-MyPink hover:cursor-pointer">Sản phẩm len</a>
+        </div>
+        <label hidden for="mobile-navbar" class="bg-gray-600 opacity-50 fixed top-0 left-0 right-0 bottom-0 nav__overlay z-10"></label>
+    </div>
+
+    <div class="text-red-700 w-fit fixed top-4 right-0 px-5 py-2 bg-white" id="errorMessage">
+        {{errorMessage}}
+    </div>
+
+    <div class="w-11/12 lg:w-4/5 mx-auto flex gap-7 pb-32">
+
+        <div class="hidden lg:block w-1/5">
+            <div class="p-5 shadow-lg mb-7">
+                <p class="w-fit mx-auto text-base font-semibold mb-3">Danh mục</p>
+                <a class="w-full flex justify-between items-center py-3 border-b" href="/product/2">
+                    <p class="hover:underline text-sm">Khăn giấy ướt</p>
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+                <a class="w-full flex justify-between items-center py-3 border-b" href="/product/3">
+                    <p class="hover:underline text-sm">Khăn đa năng</p>
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+                <a class="w-full flex justify-between items-center py-3 border-b" href="/product/1">
+                    <p class="hover:underline text-sm">Bông tẩy trang</p>
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+                <a class="w-full flex justify-between items-center py-3 border-b" href="/product/4">
+                    <p class="hover:underline text-sm">Sản phẩm len</p>
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+                <a class="w-full flex justify-between items-center py-3 border-b" href="/product/5">
+                    <p class="hover:underline text-sm">Khẩu trang</p>
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+                <div class="w-fit mx-auto text-sm mt-7">
+                    <a class="hover:underline text-gray-600" href="/product">Xem thêm</a>
+                </div>
+            </div>
+
+            <div class="p-5 shadow-lg">
+                <p class="w-fit mx-auto text-base font-semibold mb-3">Sản phẩm nổi bật</p>
+                {{#each hotproducts}}
+                <a href="/detail/{{id}}" class="flex flex-col xl:flex-row justify-start gap-2 border-b py-3">
+                    <img class="w-20 h-20" src="/uploads/{{split image ',' 0}}" alt="">
+                    <div>
+                        <p class="text-sm">{{productname}}</p>
+                        <p class="text-sm text-red-500">{{formatCurrency price}}đ</p>
+                    </div>
+                </a>
+                {{/each}}
+                <div class="w-fit mx-auto text-sm mt-5">
+                    <a class="hover:underline text-gray-600" href="/product">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-4/5">
+            <div class="text-xs text-gray-500 flex gap-2 items-center mb-4">
+                <a class="hover:text-black hover:underline" href="/">Trang chủ</a>
+                <i class="fa-solid fa-angle-right"></i>
+                <p>{{categoryname}}</p>
+            </div>
+
+            <div class="flex px-5 py-2 bg-MyPink items-center gap-6 mb-3">
+                <p class="hidden sm:block text-sm">Sắp xếp theo</p>
+                <div class="flex gap-4 items-center">
+                    <a class="text-sm bg-MydarkYellow py-2 px-5" href="">Mới nhất</a>
+                    <a class="text-sm bg-white py-2 px-5" href="">Bán chạy</a>
+                    <div class="dropdown inline-block relative">
+                        <button class="inline-flex items-center bg-white py-2 px-5 w-32 justify-between">
+                            <p class="text-sm ">Giá</p>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu absolute hidden pt-1 w-full">
+                            <li class=""><a class="bg-white hover:bg-MydarkYellow py-2 px-4 block text-xs" href="#">Cao đến thấp</a></li>
+                            <li class=""><a class="bg-white hover:bg-MydarkYellow py-2 px-4 block text-xs" href="#">Thấp đến cao</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            {{#if products}}
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-4 gap-2">
+                    {{#each products}}
+                    <div class="p-2 bg-white border-2">
+                        <img class="h-40 lg:h-44 xl:h-52 w-full object-cover mb-3" src="/uploads/{{split image ',' 0}}" alt="">
+                        <p class="text-center text-sm whitespace-nowrap overflow-hidden text-ellipsis">{{productname}}</p>
+                        <p class="text-center text-sm text-red-600">{{formatCurrency price}}đ</p>
+                        <div class="flex justify-center items-center mt-2 gap-0.5">
+                            <a href="/product/favorite/{{id}}" class="flex bg-MypaleYellow justify-center items-center rounded-md h-[28px] w-[28px] hover:bg-MydarkYellow hover:cursor-pointer"><i class="fa-solid fa-heart text-white text-sm"></i></a>
+                            <a href="/detail/{{id}}" class="bg-MypaleYellow py-1 px-3 text-sm rounded-md text-white hover:bg-MydarkYellow hover:cursor-pointer">Mua ngay</a>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <div class="flex gap-1 mx-auto w-fit mt-14">
+                    <a class="w-8 h-8 flex justify-center items-center rounded-md hover:bg-MydarkYellow bg-white border" href=""><i class="fa-solid fa-angle-left"></i></a>
+                    <a class="w-8 h-8 flex justify-center items-center rounded-md hover:bg-MydarkYellow bg-MydarkYellow border" href=""><p>1</p></a>
+                    <a class="w-8 h-8 flex justify-center items-center rounded-md hover:bg-MydarkYellow bg-white border" href=""><p>2</p></a>
+                    <a class="w-8 h-8 flex justify-center items-center rounded-md hover:bg-MydarkYellow bg-white border"><p>...</p></a>
+                    <a class="w-8 h-8 flex justify-center items-center rounded-md hover:bg-MydarkYellow bg-white border" href=""><i class="fa-solid fa-angle-right"></i></a>
+                </div>
+            {{else}}
+                <div class="w-fit mx-auto mt-10 text-red-700">Hiện tại chưa có sản phẩm nào...</div>
+            {{/if}}
+        </div>
+        
+    </div>
+
+
+    <script>
+        const errorMessage = document.getElementById('errorMessage');
+        function fadeOut(el) {
+            var opacity = 1; // Initial opacity
+            var interval = setInterval(function() {
+               if (opacity > 0) {
+                  opacity -= 0.1;
+                  el.style.opacity = opacity;
+               } else {
+                  clearInterval(interval); // Stop the interval when opacity reaches 0
+                  el.style.display = 'none'; // Hide the element
+               }
+            }, 400);
+         }
+         fadeOut(errorMessage);
+    </script>
