@@ -1,9 +1,4 @@
-<div class="w-full p-10">
-    <div class="flex items-center justify-end gap-4">
-        <a href=""><i class="fa-regular fa-bell text-xl text-MydarkYellow"></i></a>
-        <a href=""><i class="fa-regular fa-message text-xl text-MydarkYellow"></i></a>
-        <img class="w-12 h-12 object-cover rounded-full" src="/images/btt1.jpg" alt="">
-    </div>
+<div class="w-full p-10 pt-0">
 
     {{#if addAction}}
 
@@ -17,7 +12,7 @@
         <input hidden type="checkbox" id="addCategory" class="">
         <div for="addCategory" class="h-fit addCategory-form w-fit px-10 py-7 fixed top-0 bottom-0 left-[36%] z-20 bg-MyPink rounded-xl">
             <p class="text-2xl font-bold w-fit mx-auto text-MydarkYellow mb-3">Thêm loại</p>
-            <form action="/adminCategory" method="post" class="w-[300px]">
+            <form action="/admin/category" method="post" class="w-[300px]">
                 <label class="text-gray-600 text-sm" for="">Tên loại</label>
                 <input required name="category" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text">
                 <button type="submit" class="py-2 px-6 rounded-lg bg-MydarkYellow text-white hover:bg-black hover:text-MydarkYellow">Thêm</button>
@@ -49,16 +44,16 @@
                 {{#each categories}}
                 <tr class="bg-white border-b">
                     <td class="px-6 py-3 text-black font-medium">
-                        {{id}}
+                        {{categoryid}}
                     </td>
                     <td class="px-6 py-3">
                         {{categoryname}}
                     </td>
                     <td class="px-6 py-3 w-10 text-center">
-                        <a href="/adminCategory/update/{{id}}" class="font-medium text-blue-600"><i class="fa-solid fa-pen-to-square text-base"></i></a>
+                        <a href="/admin/category/update/{{categoryid}}" class="font-medium text-blue-600"><i class="fa-solid fa-pen-to-square text-base"></i></a>
                     </td>
                     <td class="px-6 py-3 w-10 text-center">
-                        <a href="/adminCategory/delete/{{id}}" class="font-medium text-red-600"><i class="fa-solid fa-trash text-base"></i></a>
+                        <a href="/admin/category/delete/{{categoryid}}" class="font-medium text-red-600"><i class="fa-solid fa-trash text-base"></i></a>
                     </td>
                 </tr>
                 {{/each}}
@@ -69,13 +64,11 @@
 
     {{else}}
 
-    <p class="text-2xl font-bold w-fit mx-auto text-MydarkYellow mb-3">Thêm loại</p>
+    <p class="text-2xl font-bold w-fit mx-auto text-MydarkYellow mb-3">Chỉnh sửa loại</p>
     <form action="" method="post" class="w-[300px] mx-auto">
-    {{#each category}}
         <label class="text-gray-600 text-sm" for="">Tên loại</label>
-        <input name="category" value="{{categoryname}}" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text">
-        <button type="submit" class="py-1 px-4 rounded-lg bg-MydarkYellow text-white hover:bg-black hover:text-MydarkYellow">Thêm</button>
-    {{/each}}
+        <input name="category" value="{{category.categoryname}}" class="text-sm border border-gray-300 p-2 my-1 w-full focus:border-MydarkYellow focus:outline-none" type="text">
+        <button type="submit" class="py-1 px-4 rounded-lg bg-MydarkYellow text-white hover:bg-black hover:text-MydarkYellow">Sửa</button>
     </form>
 
     {{/if}}

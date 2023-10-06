@@ -1,7 +1,7 @@
     <div class="z-10 mt-7">
         <input hidden type="checkbox" id="mobile-navbar" class="">
 
-        <div class="responsive-navbar fixed top-0 left-0 right-0 bottom-0 z-10 bg-white w-fit p-8 translate-x-[-100%] flex flex-col z-20">
+        <div class="responsive-navbar fixed top-0 left-0 right-0 bottom-0 bg-white w-fit p-8 translate-x-[-100%] flex flex-col z-20">
             <label for="mobile-navbar" class=""><i class="fa-solid fa-xmark text-3xl text-red-600 mb-4 hover:cursor-pointer"></i></label>
             <a href="/product/1" class="text-lg py-4 pl-4 pr-24 border-b-[2px] border-gray-100 hover:bg-MyPink hover:cursor-pointer">Bông tẩy trang</a>
             <a href="/product/3" class="text-lg py-4 pl-4 pr-24 border-b-[2px] border-gray-100 hover:bg-MyPink hover:cursor-pointer">Khăn đa năng</a>
@@ -12,8 +12,8 @@
         <label hidden for="mobile-navbar" class="bg-gray-600 opacity-50 fixed top-0 left-0 right-0 bottom-0 nav__overlay z-10"></label>
     </div>
 
-    <div class="text-red-700 w-fit fixed top-4 right-0 px-5 py-2 bg-white" id="errorMessage">
-        {{errorMessage}}
+    <div class="text-red-700 w-fit fixed top-36 right-10" id="errorMessage">
+        {{Message}}
     </div>
 
     <div class="w-11/12 lg:w-4/5 mx-auto flex gap-7 pb-32">
@@ -50,7 +50,7 @@
                 <p class="w-fit mx-auto text-base font-semibold mb-3">Sản phẩm nổi bật</p>
                 {{#each hotproducts}}
                 <a href="/detail/{{id}}" class="flex flex-col xl:flex-row justify-start gap-2 border-b py-3">
-                    <img class="w-20 h-20" src="/uploads/{{split image ',' 0}}" alt="">
+                    <img class="w-20 h-20" src="/images/product/{{split image ',' 0}}" alt="">
                     <div>
                         <p class="text-sm">{{productname}}</p>
                         <p class="text-sm text-red-500">{{formatCurrency price}}đ</p>
@@ -92,24 +92,24 @@
                 <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-4 gap-2">
                     {{#each products}}
                     <div class="p-2 bg-white border-2">
-                        <img class="h-40 lg:h-44 xl:h-52 w-full object-cover mb-3" src="/uploads/{{split image ',' 0}}" alt="">
+                        <img class="h-40 lg:h-44 xl:h-52 w-full object-cover mb-3" src="/images/product/{{split image ',' 0}}" alt="">
                         <p class="text-center text-sm whitespace-nowrap overflow-hidden text-ellipsis">{{productname}}</p>
                         <p class="text-center text-sm text-red-600">{{formatCurrency price}}đ</p>
                         <div class="flex justify-center items-center mt-2 gap-0.5">
-                            <a href="/product/favorite/{{id}}" class="flex bg-MypaleYellow justify-center items-center rounded-md h-[28px] w-[28px] hover:bg-MydarkYellow hover:cursor-pointer"><i class="fa-solid fa-heart text-white text-sm"></i></a>
-                            <a href="/detail/{{id}}" class="bg-MypaleYellow py-1 px-3 text-sm rounded-md text-white hover:bg-MydarkYellow hover:cursor-pointer">Mua ngay</a>
+                            <a href="/user/favorite/{{productid}}" class="flex bg-MypaleYellow justify-center items-center rounded-md h-[28px] w-[28px] hover:bg-MydarkYellow hover:cursor-pointer"><i class="fa-solid fa-heart text-white text-sm"></i></a>
+                            <a href="/product/detail/{{productid}}" class="bg-MypaleYellow py-1 px-3 text-sm rounded-md text-white hover:bg-MydarkYellow hover:cursor-pointer">Mua ngay</a>
                         </div>
                     </div>
                     {{/each}}
                 </div>
 
-                <div class="flex gap-1 mx-auto w-fit mt-14">
+                {{!-- <div class="flex gap-1 mx-auto w-fit mt-14">
                     <a class="w-8 h-8 flex justify-center items-center rounded-md hover:bg-MydarkYellow bg-white border" href=""><i class="fa-solid fa-angle-left"></i></a>
                     <a class="w-8 h-8 flex justify-center items-center rounded-md hover:bg-MydarkYellow bg-MydarkYellow border" href=""><p>1</p></a>
                     <a class="w-8 h-8 flex justify-center items-center rounded-md hover:bg-MydarkYellow bg-white border" href=""><p>2</p></a>
                     <a class="w-8 h-8 flex justify-center items-center rounded-md hover:bg-MydarkYellow bg-white border"><p>...</p></a>
                     <a class="w-8 h-8 flex justify-center items-center rounded-md hover:bg-MydarkYellow bg-white border" href=""><i class="fa-solid fa-angle-right"></i></a>
-                </div>
+                </div> --}}
             {{else}}
                 <div class="w-fit mx-auto mt-10 text-red-700">Hiện tại chưa có sản phẩm nào...</div>
             {{/if}}
@@ -130,7 +130,7 @@
                   clearInterval(interval); // Stop the interval when opacity reaches 0
                   el.style.display = 'none'; // Hide the element
                }
-            }, 400);
+            }, 300);
          }
          fadeOut(errorMessage);
     </script>

@@ -1,10 +1,7 @@
 const db = require('../databasebg');
 
 const admin = {
-    getCategories: async function () {
-        const query = await db.query('SELECT * FROM categories');
-        return query.rows;
-    },
+    // ==== PRODUCTS ====
     getHotProducts: async function () {
         const query = await db.query('SELECT * FROM products WHERE hot = true');
         return query.rows;
@@ -55,6 +52,32 @@ const admin = {
         if (query.rowCount > 0) return true;
         else return false;
     },
+    // ==== CATEGORIES ====
+    getCategories: async function () {
+        const query = await db.query('SELECT * FROM categories');
+        return query.rows;
+    },
+    getCategory: async function (categoryId) {
+        const query = await db.query('SELECT * FROM categories WHERE categoryid = $1', [categoryId]);
+        return query.rows[0];
+    },
+    addCategory: async function (categoryname) {
+        const query = await db.query('INSERT INTO categories (categoryname) VALUES ($1)', [categoryname]);
+        if (query.rowCount > 0) return true; // Category added successfully
+        else return false; // No rows affected, category not added
+    },
+    deleteCategory: async function (categoryId) {
+        const query = await db.query('DELETE FROM categories WHERE categoryid = $1', [categoryId]);
+        if (query.rowCount > 0) return true; 
+        else return false; 
+    },
+    updateCategory: async function (categoryId, categoryname) {
+        const query = await db.query('UPDATE categories SET categoryname = $1 WHERE categoryid = $2', [categoryname, categoryId]);
+        if (query.rowCount > 0) return true; 
+        else return false;
+    },
+    // ==== ORDERS ====
+    // ==== REVENUES ====
 };
 
 module.exports = admin;

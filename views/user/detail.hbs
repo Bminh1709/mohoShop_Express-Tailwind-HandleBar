@@ -1,28 +1,26 @@
 <div class="bg-gray-100 h-fit py-7">
-
-    {{#each product}}
     
     <div class="w-11/12 xl:w-4/5 mx-auto">
         <div class="flex items-center gap-2 text-xs text-gray-600">
             <a class="hover:underline" href="/">Trang chủ</a>
             <i class="fa-solid fa-angle-right"></i>
-            <a>{{categoryname}}</a>
+            <a>{{product.categoryname}}</a>
             <i class="fa-solid fa-angle-right"></i>
-            <a class="last:text-black font-medium">{{productname}}</a>
+            <a class="last:text-black font-medium">{{product.productname}}</a>
         </div>
     </div>
 
     <div class="w-11/12 xl:w-4/5 mx-auto bg-white mt-4 p-5">
         <div class="w-full h-fit flex flex-col sm:flex-row gap-5">
             <div class="w-full sm:min-w-[250px] sm:w-[250px] md:min-w-[350px] md:w-[350px] lg:min-w-[450px] lg:w-[450px]">
-                <img src="/uploads/{{split image ',' 0}}" alt="" class="h-full sm:h-[250px] md:h-[350px] lg:h-[450px] object-cover">
+                <img src="/images/product/{{split product.image ',' 0}}" alt="" class="h-full sm:h-[250px] md:h-[350px] lg:h-[450px] object-cover">
                 <div class="flex gap-2 mt-4 relative">
                     {{!-<div class="absolute bg-gray-300 h-7 w-5 md:h-10 md:w-6 flex items-center justify-center top-5 opacity-70 hover:opacity-100 hover:cursor-pointer">
                         <i class="fa-solid fa-angle-left"></i>
                     </div> --}}
-                    <div class="flex gap-2 overflow-x-scroll  w-full"> 
-                        {{#each (splitImgs image ',')}}
-                            <img src="/uploads/{{this}}" alt="" class="w-16 h-16 md:w-20 md:h-20">
+                    <div class="flex gap-2 overflow-x-clip  w-full"> 
+                        {{#each (splitImgs product.image ',')}}
+                            <img src="/images/product/{{this}}" alt="" class="w-16 h-16 md:w-20 md:h-20">
                         {{/each}}
                     </div>
                     {{!-<div class="absolute right-0 bg-gray-300 h-7 w-5 md:h-10 md:w-6 flex items-center justify-center top-5 opacity-70 hover:opacity-100 hover:cursor-pointer">
@@ -32,9 +30,9 @@
                 <div class="flex flex-col md:flex-row justify-evenly py-4 border-y border-gray-200 mt-4">
                     <div class="flex gap-1 items-center mx-auto md:mx-0">
                         <p class="text-gray-500 text-sm">Chia sẽ:</p>
-                        <a href=""><img class="w-6 h-6" src="/images/Facebook-logo.png" alt=""></a>
-                        <a href=""><img class="w-6 h-6" src="/images/google-icon.png" alt=""></a>
-                        <a href=""><img class="w-6 h-6" src="/images/mailLogo.png" alt=""></a>
+                        <a href=""><img class="w-6 h-6" src="/images/system/Facebook-logo.png" alt=""></a>
+                        <a href=""><img class="w-6 h-6" src="/images/system/google-icon.png" alt=""></a>
+                        <a href=""><img class="w-6 h-6" src="/images/system/mailLogo.png" alt=""></a>
                     </div>
                     <div class="h-0.5 w-full md:h-7 md:w-0.5 bg-gray-100 mx-auto md:mx-0 my-3 md:my-0"></div>
                     <div class="flex gap-1 text-sm items-center mx-auto md:mx-0">
@@ -49,16 +47,16 @@
                     <i class="fa-solid fa-circle-check text-blue-600 text-xl"></i>
                     <p class="text-blue-600 text-sm">Chính hãng</p>
                 </div>
-                <p class="text-2xl">{{productname}}</p>
+                <p class="text-2xl">{{product.productname}}</p>
                 <div class="flex gap-1">
                     <p class="text-gray-600">Loại:</p>
-                    <p>{{categoryname}}</p>
+                    <p>{{product.categoryname}}</p>
                 </div>
                 <div class="w-full bg-gray-200 p-5 flex">
-                    <p class="text-2xl font-semibold">{{formatCurrency discountprice}}đ</p>
-                    <p class="line-through text-red-700 text-sm ml-2">{{formatCurrency price}}đ</p>
+                    <p class="text-2xl font-semibold">{{formatCurrency product.discountprice}}đ</p>
+                    <p class="line-through text-red-700 text-sm ml-2">{{formatCurrency product.price}}đ</p>
                 </div>
-                <p class="flex flex-wrap text-gray-700">{{description}}</p>
+                <p class="flex flex-wrap text-gray-700">{{product.description}}</p>
                 <div class="mt-5">
                     <p class="text-sm mb-1">Số lượng</p>
                     <div>
@@ -83,7 +81,7 @@
             </div>
             <div>
                 <div class="tab-content" id="info">
-                    {{detaildescription}}
+                    {{product.detaildescription}}
                 </div>
                 <div class="tab-content text-sm" id="guide">
                     Đọc thêm chính sách thanh toán tại mục "Chính sách"<br>
@@ -127,7 +125,5 @@
             </div>
         </div>
     </div>
-
-    {{/each}}
 
 </div>

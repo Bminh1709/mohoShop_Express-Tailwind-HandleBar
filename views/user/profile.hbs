@@ -12,13 +12,11 @@
             <div class="flex gap-3 flex-col lg:flex-row">
 
                 <div class="min-w-[300px] bg-white py-10 h-fit">
-                    {{#each user}}
-                        {{#if (eq image null)}}
-                            <img src="/userImgs/no-photo-available.png" class="w-[150px] h-[150px] rounded-full mx-auto object-cover border">
+                        {{#if (eq user.image null)}}
+                            <img src="/images/system/no-photo-available.png" class="w-[150px] h-[150px] rounded-full mx-auto object-cover border">
                         {{else}}
-                            <img src="/images/btt1.jpg" class="w-[150px] h-[150px] rounded-full mx-auto">
+                            <img src="/images/user/{{user.image}}" class="w-[150px] h-[150px] rounded-full mx-auto">
                         {{/if}}
-                    {{/each}}
                     <p class="w-fit mx-auto text-lg my-3">Bùi Minh</p>
                     <div class="w-full">
                         <button class="flex gap-3 items-center border-t border-gray-200 py-3 px-5 w-full hover:bg-gray-100" onclick="showTabProfile('favorite')">
@@ -40,21 +38,25 @@
                     <p class="p-3 text-sm w-full">Sản phẩm đã thích</p>
                     <div class="w-full h-2 bg-MypaleGrey"></div>
                     <div class="pb-7">
-                        {{#each favorites}}
-                        <div class="relative">
-                            <a class="flex p-5 justify-between border-b border-gray-200 gap-3" href="/detail/{{id}}">
-                                <div class="flex gap-3">
-                                    <img src="/uploads/{{split image ',' 0}}" alt="" class="w-[120px] h-[120px]">
-                                    <p>{{productname}}</p>
-                                </div>
-                                <div class="mr-10 mt-2">
-                                    <p class="text-lg text-red-700">{{formatCurrency discountprice}}đ</p>
-                                    <p class="text-sm line-through">{{formatCurrency price}}đ</p>
-                                </div>
-                                <a href="/product/favorite/delete/{{favorite_id}}" class="absolute text-3xl top-0 right-3 hover:text-MydarkYellow">x</a>
-                            </a>
-                        </div>
-                        {{/each}}
+                        {{#if favorites}}
+                            {{#each favorites}}
+                            <div class="relative">
+                                <a class="flex p-5 justify-between border-b border-gray-200 gap-3" href="/detail/{{id}}">
+                                    <div class="flex gap-3">
+                                        <img src="/images/product/{{split image ',' 0}}" alt="" class="w-[120px] h-[120px]">
+                                        <p>{{productname}}</p>
+                                    </div>
+                                    <div class="mr-10 mt-2">
+                                        <p class="text-lg text-red-700">{{formatCurrency discountprice}}đ</p>
+                                        <p class="text-sm line-through">{{formatCurrency price}}đ</p>
+                                    </div>
+                                    <a href="/user/favorite/delete/{{favoriteid}}" class="absolute text-3xl top-0 right-3 hover:text-MydarkYellow">x</a>
+                                </a>
+                            </div>
+                            {{/each}}
+                        {{else}}
+                            <p class="p-4 text-gray-400">Mục này trống</p>
+                        {{/if}}
                     </div>
                 </div>
 
@@ -86,37 +88,40 @@
                 <div class="w-full bg-white h-fit tab-content-profile hidden" id="info">
                     <p class="p-3 text-sm w-full">Thông tin</p>
                     <div class="w-full h-2 bg-MypaleGrey"></div>
-                    {{#each user}}
                     <div class="pb-7 p-5 py-10 flex flex-col md:flex-row gap-10 md:gap-0 justify-evenly items-center">
                         <div>
-                            <form action="" class="flex">
+                            <form action="" method="post" class="flex">
                                 <div class="flex flex-col gap-4 mr-2 sm:mr-8 text-gray-500">
                                     <label class="p-2" for="">Tên đầy đủ</label>
                                     <label class="p-2" for="">Tài khoản gmail</label>
                                     <label class="p-2" for="">Số điện thoại</label>
                                     <label class="p-2" for="">Địa chỉ</label>
+                                    <label class="p-2" for="">Mật khẩu</label>
                                 </div>
                                 <div class="flex flex-col gap-4">
-                                    <input class="p-2 focus:outline-none border border-gray-300 focus:outline-MypaleYellow" type="text" value="{{fullname}}">
-                                    <input class="p-2 focus:outline-none border border-gray-300 focus:outline-MypaleYellow" type="text" value="{{gmail}}">
-                                    <input class="p-2 focus:outline-none border border-gray-300 focus:outline-MypaleYellow" type="text" value="{{phone}}">
-                                    <input class="p-2 focus:outline-none border border-gray-300 focus:outline-MypaleYellow" type="text" value="{{address}}">
+                                    <input class="p-2 focus:outline-none border border-gray-300 focus:outline-MypaleYellow" type="text" name="fullname" value="{{user.fullname}}">
+                                    <input class="p-2 focus:outline-none border border-gray-300 focus:outline-MypaleYellow" type="text" name="gmail" value="{{user.gmail}}" readonly>
+                                    <input class="p-2 focus:outline-none border border-gray-300 focus:outline-MypaleYellow" type="text" name="phone" value="{{user.phone}}">
+                                    <input class="p-2 focus:outline-none border border-gray-300 focus:outline-MypaleYellow" type="text" name="address" value="{{user.address}}">
+                                    <div class="relative"><input class="p-2 focus:outline-none border border-gray-300 focus:outline-MypaleYellow" id="passwordInput" name="password" type="password" value="{{user.password}}"><i id="showPassword" class="fa-regular fa-eye text-xs top-3 absolute right-3 text-gray-500 hover:text-black"></i></div>
                                     <button type="submit" class="bg-MyPink w-14 px-2 py-1 rounded-sm hover:bg-MydarkYellow">Lưu</button>
                                 </div>
                             </form>
                         </div>
                         <div class="bg-gray-100 w-0.5 h-48 hidden md:block"></div>
                         <div class="flex flex-col gap-4">
-                            {{#if (eq image null)}}
-                                <img src="/userImgs/no-photo-available.png" class="w-[120px] h-[120px] rounded-full mx-auto object-cover border">
+                            {{#if (eq user.image null)}}
+                                <img src="/images/system/no-photo-available.png" class="w-[120px] h-[120px] rounded-full mx-auto object-cover border">
                             {{else}}
-                                <img src="" class="w-[120px] h-[120px] rounded-full mx-auto object-cover border">
+                                <img src="/images/user/{{user.image}}" class="w-[120px] h-[120px] rounded-full mx-auto object-cover border">
                             {{/if}}
-                            <label for="imgchose" class="border border-gray-300 py-1 px-3 mx-auto hover:cursor-pointer">Chọn ảnh</label>
-                            <input id="imgchose" type="file" hidden>
+                            <label for="imgchose" class="border border-gray-300 py-1 px-3 mx-auto hover:cursor-pointer bg-MypalePink hover:bg-MydarkYellow">Chọn ảnh</label>
+                            <form action="/user/profile/image" method="post">
+                                <input id="imgchose" name="image" type="file" accept="image/*" hidden>
+                                <button type="submit">Thêm ảnh</button>
+                            </form>
                         </div>
                     </div>
-                    {{/each}}
                 </div>
                 
 
@@ -125,3 +130,19 @@
         </div>
 
 </div>
+
+
+<script>
+    const passwordInput = document.getElementById('passwordInput');
+    const showPasswordIcon = document.getElementById('showPassword');
+
+    showPasswordIcon.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            // Change the input type to text to show the password
+            passwordInput.type = 'text';
+        } else {
+            // Change the input type back to password to hide the password
+            passwordInput.type = 'password';
+        }
+    });
+</script>
