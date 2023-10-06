@@ -518,17 +518,26 @@ video {
 .right-0 {
   right: 0px;
 }
+.right-10 {
+  right: 2.5rem;
+}
 .right-3 {
   right: 0.75rem;
 }
 .top-0 {
   top: 0px;
 }
+.top-36 {
+  top: 9rem;
+}
 .top-4 {
   top: 1rem;
 }
 .top-5 {
   top: 1.25rem;
+}
+.top-3 {
+  top: 0.75rem;
 }
 .z-10 {
   z-index: 10;
@@ -971,8 +980,8 @@ video {
 .overflow-x-auto {
   overflow-x: auto;
 }
-.overflow-x-scroll {
-  overflow-x: scroll;
+.overflow-x-clip {
+  overflow-x: clip;
 }
 .overflow-y-scroll {
   overflow-y: scroll;
@@ -1214,6 +1223,9 @@ video {
 .py-7 {
   padding-top: 1.75rem;
   padding-bottom: 1.75rem;
+}
+.pb-0 {
+  padding-bottom: 0px;
 }
 .pb-10 {
   padding-bottom: 2.5rem;

@@ -13,14 +13,21 @@
 
     <div class="justify-center bg-MypalePink hidden lg:flex border-t border-gray-400">
       <ul class="flex items-center text-base">
-          <li class="{{#if (eq activeNav 1)}}activeNav{{/if}}"><a href="/adminCategory"><button class="py-3 px-10 hover:bg-white">Thể loại</button></a></li>
-          <li class="{{#if (eq activeNav 2)}}activeNav{{/if}}"><a href="/adminProduct"><button class="py-3 px-10 hover:bg-white">Sản phẩm</button></a></li>
-          <li class="{{#if (eq activeNav 3)}}activeNav{{/if}}"><a href="/adminOrder"><button class="py-3 px-10 hover:bg-white">Đơn hàng</button></a></li>
-          <li class="{{#if (eq activeNav 4)}}activeNav{{/if}}"><a href="/adminRevenue"><button class="py-3 px-10 hover:bg-white">Doanh thu</button></a></li>
+          <li class="{{#if (eq activeNav 1)}}activeNav{{/if}}"><a href="/admin/category"><button class="py-3 px-10 hover:bg-white">Thể loại</button></a></li>
+          <li class="{{#if (eq activeNav 2)}}activeNav{{/if}}"><a href="/admin"><button class="py-3 px-10 hover:bg-white">Sản phẩm</button></a></li>
+          <li class="{{#if (eq activeNav 3)}}activeNav{{/if}}"><a href="/admin/Order"><button class="py-3 px-10 hover:bg-white">Đơn hàng</button></a></li>
+          <li class="{{#if (eq activeNav 4)}}activeNav{{/if}}"><a href="/admin/Revenue"><button class="py-3 px-10 hover:bg-white">Doanh thu</button></a></li>
       </ul>
     </div>
 
-    <div class="min-h-screen">
+    <div class="w-full min-h-screen">
+
+      <div class="flex items-center justify-end gap-4 p-10 pb-0">
+          <a href=""><i class="fa-regular fa-bell text-xl text-MydarkYellow"></i></a>
+          <a href=""><i class="fa-regular fa-message text-xl text-MydarkYellow"></i></a>
+          <img class="w-12 h-12 object-cover rounded-full" src="/images/system/btt1.jpg" alt="">
+      </div>
+    
     {{{body}}}
     </div>
 

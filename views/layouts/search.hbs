@@ -27,23 +27,23 @@
             <a href="/" class="text-5xl text-MydarkYellow font-bold pt-2">moho<span class="text-black">.</span></a>
             <div class="flex gap-2">
                 <a href=""><i class="fa-solid fa-bag-shopping text-base hover:text-MydarkYellow"></i></a>
-                <a href="/profile"><i class="fa-solid fa-heart text-base hover:text-MydarkYellow"></i></a>
-                <a href="/profile"><i class="fa-solid fa-user text-base hover:text-MydarkYellow"></i></a>
+                <a href="/user/profile"><i class="fa-solid fa-heart text-base hover:text-MydarkYellow"></i></a>
+                <a href="/user/profile"><i class="fa-solid fa-user text-base hover:text-MydarkYellow"></i></a>
             </div>
         </div>
 
         <div class="flex mx-auto justify-around items-center w-3/4 py-3 lg:py-2 gap-16">
             <a href="/" class="hidden lg:block text-5xl text-MydarkYellow font-bold pt-2">moho<span class="text-black">.</span></a>
-            <form action="/product" class="w-full md:w-4/5 relative">
-                <input  name="filter" class="w-full outline-none py-2 px-4 rounded-sm" type="text" >
+            <form action="/user/profile" class="w-full md:w-4/5 relative">
+                <input name="filter" value="{{filter}}" class="w-full outline-none py-2 px-4 rounded-sm" type="text" >
                 <button type="submit" class="absolute top-0 right-0 h-full w-14 lg:w-20 border-4 border-white bg-MyPink flex justify-center items-center hover:cursor-pointer hover:bg-MydarkYellow">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
             <div class="hidden lg:flex gap-2">
                 <a href=""><i class="fa-solid fa-bag-shopping text-base hover:text-MydarkYellow"></i></a>
-                <a href="/profile"><i class="fa-solid fa-heart text-base hover:text-MydarkYellow"></i></a>
-                <a href="/profile"><i class="fa-solid fa-user text-base hover:text-MydarkYellow"></i></a>
+                <a href="/user/profile"><i class="fa-solid fa-heart text-base hover:text-MydarkYellow"></i></a>
+                <a href="/user/profile"><i class="fa-solid fa-user text-base hover:text-MydarkYellow"></i></a>
             </div>
         </div>
     </div>
