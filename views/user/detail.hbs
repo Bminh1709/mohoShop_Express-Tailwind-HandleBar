@@ -52,23 +52,27 @@
                     <p class="text-gray-600">Loại:</p>
                     <p>{{product.categoryname}}</p>
                 </div>
-                <div class="w-full bg-gray-200 p-5 flex">
-                    <p class="text-2xl font-semibold">{{formatCurrency product.discountprice}}đ</p>
-                    <p class="line-through text-red-700 text-sm ml-2">{{formatCurrency product.price}}đ</p>
-                </div>
-                <p class="flex flex-wrap text-gray-700">{{product.description}}</p>
-                <div class="mt-5">
-                    <p class="text-sm mb-1">Số lượng</p>
-                    <div>
-                        <button class="w-7 h-full bg-gray-200 hover:bg-gray-400" id="qtyminus" onclick="minus()">-</button>
-                        <input class="w-10 text-center outline-none" type="text" readonly name="" value="1" id='quantity'>
-                        <button class="w-7 h-full bg-gray-200 hover:bg-gray-400" id="qtyplus" onclick="plus()">+</button>
+                <form action="/user/handleorder" method="post" class="">
+                    <input type="text" hidden name="productid" value="{{product.productid}}">
+                    <input type="text" hidden name="discountprice" value="{{product.discountprice}}">
+                    <div class="w-full bg-gray-200 p-5 flex">
+                        <p class="text-2xl font-semibold">{{formatCurrency product.discountprice}}đ</p>
+                        <p class="line-through text-red-700 text-sm ml-2">{{formatCurrency product.price}}đ</p>
                     </div>
-                </div>
-                <div class="flex gap-2">
-                    <a href="/cart/{{id}}" class="border border-MydarkYellow py-2 px-3 lg:px-5 hover:bg-MypaleYellow hover:text-white">Thêm vào giỏ hàng</a>
-                    <button class="bg-MydarkYellow text-white py-2 px-4 lg:px-7 hover:border border-MydarkYellow hover:bg-white hover:text-black">Mua hàng</button>
-                </div>
+                    <p class="flex flex-wrap text-gray-700 mt-3">{{product.description}}</p>
+                    <div class="">
+                        <p class="text-sm mb-1 mt-5">Số lượng</p>
+                        <div>
+                            <button class="w-7 h-full bg-gray-200 hover:bg-gray-400" id="qtyminus" type="button" onclick="minus()">-</button>
+                            <input class="w-10 text-center outline-none" type="text" readonly name="quantity" value="1" id='quantity'>
+                            <button class="w-7 h-full bg-gray-200 hover:bg-gray-400" id="qtyplus" type="button" onclick="plus()">+</button>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mt-5">
+                        <button name="command" type="submit" value="cart" class="border border-MydarkYellow py-2 px-3 lg:px-5 hover:bg-MypaleYellow hover:text-white">Thêm vào giỏ hàng</button>
+                        <button name="command" type="submit" value="buy" class="bg-MydarkYellow text-white py-2 px-4 lg:px-7 hover:border border-MydarkYellow hover:bg-white hover:text-black">Mua hàng</button>
+                    </div>
+                </form>
             </div>
         </div>
 
