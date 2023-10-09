@@ -527,6 +527,9 @@ video {
 .top-0 {
   top: 0px;
 }
+.top-3 {
+  top: 0.75rem;
+}
 .top-36 {
   top: 9rem;
 }
@@ -535,9 +538,6 @@ video {
 }
 .top-5 {
   top: 1.25rem;
-}
-.top-3 {
-  top: 0.75rem;
 }
 .z-10 {
   z-index: 10;

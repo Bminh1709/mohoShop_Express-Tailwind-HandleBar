@@ -35,6 +35,11 @@ app.engine('.hbs', exphbs.engine({
       const numericValue = Number(value);
       const formattedValue = numericValue.toLocaleString('vi-VN');
       return formattedValue;
+    },
+    formatDate: function(date) {
+      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+      const formattedDate = new Date(date).toLocaleDateString('vi-VN', options);
+      return formattedDate;
     }
   },
   runtimeOptions: {

@@ -2,9 +2,9 @@
 
         <div class="h-fit w-10/12 mx-auto">
             <div class="flex items-center gap-2 text-xs text-gray-600 mb-3">
-                <a href="">Trang chủ</a>
+                <a href="/">Trang chủ</a>
                 <i class="fa-solid fa-angle-right"></i>
-                <a href="">Trang cá nhân</a>
+                <a href="/user/profile">Trang cá nhân</a>
                 <i class="fa-solid fa-angle-right"></i>
                 <a href="" class="last:text-black font-medium">Thông tin</a>
             </div>
@@ -15,7 +15,7 @@
                         {{#if (eq user.image null)}}
                             <img src="/images/system/no-photo-available.png" class="w-[150px] h-[150px] rounded-full mx-auto object-cover border">
                         {{else}}
-                            <img src="/images/user/{{user.image}}" class="w-[150px] h-[150px] rounded-full mx-auto">
+                            <img src="/images/user/{{user.image}}" class="w-[150px] h-[150px] rounded-full mx-auto object-cover">
                         {{/if}}
                     <p class="w-fit mx-auto text-lg my-3">Bùi Minh</p>
                     <div class="w-full">
@@ -64,23 +64,25 @@
                     <p class="p-3 text-sm w-full">Đơn hàng của tôi</p>
                     <div class="w-full h-2 bg-MypaleGrey"></div>
                     <div class="pb-7">
-                        <div class="flex p-5 justify-between border-b border-gray-200 gap-3" href="www">
-                            <div class="flex gap-3">
-                                <img src="/images/btt1.jpg" alt="" class="w-[120px] h-[120px]">
+                        {{#each orders}}
+                        <a class="flex p-5 justify-between border-b border-gray-200 gap-3" href="/user/payment/{{orderid}}">
+                            <div class="">
+                                <p class="text-lg">Ngày đặt hàng: {{formatDate dateorder}}</p>
                                 <div>
-                                    <p>Bông tẩy trang cottonpad 222 miếng top 1 thế giới</p>
-                                    <p class="text-sm">Số lượng: <span class="text-red-700">2</span></p>
-                                    <p class="text-sm">Ngày: 2/10/2023</p>
+                                    <p class="text-sm">Ghi chú: <span class="text-red-700">{{note}}</span></p>
                                 </div>
                             </div>
                             <div class="flex flex-col justify-between items-end">
                                 <div>
-                                    <p class="text-sm text-red-700">20.000 đ</p>
-                                    <p class="text-xs line-through">22.000 đ</p>
+                                    {{#if status}}
+                                        <p class="text-xs">Trạng thái: đã thanh toán</p>
+                                    {{else}}
+                                        <p class="text-xs">Trạng thái: chưa thanh toán</p>
+                                    {{/if}}
                                 </div>
-                                <p class="text-lg">Thành tiền: 40.000 đ</p>
                             </div>
-                        </div>
+                        </a>
+                        {{/each}}
                     </div>
                 </div>
 
@@ -116,7 +118,7 @@
                                 <img src="/images/user/{{user.image}}" class="w-[120px] h-[120px] rounded-full mx-auto object-cover border">
                             {{/if}}
                             <label for="imgchose" class="border border-gray-300 py-1 px-3 mx-auto hover:cursor-pointer bg-MypalePink hover:bg-MydarkYellow">Chọn ảnh</label>
-                            <form action="/user/profile/image" method="post">
+                            <form action="/user/profile/image" method="post" class="text-center" enctype="multipart/form-data">
                                 <input id="imgchose" name="image" type="file" accept="image/*" hidden>
                                 <button type="submit">Thêm ảnh</button>
                             </form>

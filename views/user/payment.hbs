@@ -21,14 +21,14 @@
                                 <p class="whitespace-nowrap">Địa chỉ:</p>
                             </div>
                             <div>
-                                <p>Bùi Quang Minh</p>
-                                <p>0706162561</p>
-                                <p>78 Lê Tấn Trung, thọ quang, sơn trà, đà nẵng</p>
+                                <p>{{user.fullname}}</p>
+                                <p>{{user.phone}}</p>
+                                <p>{{user.address}}</p>
                             </div>
                         </div>
                         <div class="border-t border-gray-300 pt-5 pb-2">
                             <p class="text-center text-xl text-gray-500">Tổng tiền</p>
-                            <p class="text-center text-xl text-red-700">35.000đ</p>
+                            <p class="text-center text-xl text-red-700">{{formatCurrency totalPrice}}đ</p>
                         </div>
                     </div>
                     <div class="bg-white w-full p-3 border-t-8 border-MypaleGrey">
@@ -47,12 +47,17 @@
                         </div>
                         <p class="mx-auto text-gray-400 w-fit text-lg">Hoặc</p>
                         <div class="pb-3">
-                            <img src="/images/bank.jpg" class="h-[200px] w-[170px] rounded-md mx-auto">
+                            <img src="/images/system/bank.jpg" class="h-[200px] w-[170px] rounded-md mx-auto">
                         </div>
                     </div>
-                    <button class="py-2 bg-MypaleYellow text-white w-full mt-3 text-lg hover:bg-MydarkYellow">
-                        Đã thanh toán
-                    </button>
+                    {{#if status}}
+                    {{else}}
+                    <a href="/user/paid">
+                        <button class="py-2 bg-MypaleYellow text-white w-full mt-3 text-lg hover:bg-MydarkYellow">
+                            Đã thanh toán
+                        </button>
+                    </a>
+                    {{/if}}
                 </div>
 
                 <div class="w-full bg-white h-fit">
@@ -66,26 +71,28 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each details}}
                             <tr class="first:border-t-8 first:border-MypaleGrey border-t border-gray-200">
                                 <td class="px-2 sm:px-6 py-4">
                                     <div class="flex gap-2">
-                                        <img src="/assets/btt1.jpg" alt="" class="hidden md:block w-[80px] h-[100px] object-cover">
+                                        <img src="/images/product/{{split image ',' 0}}" alt="" class="hidden md:block w-[80px] h-[100px] object-cover">
                                         <p>Bông tẩy trang cottonpad 222 miếng top 1 thế giới</p>
                                     </div>
                                 </td>
-                                <td class="whitespace-nowrap px-2 sm:px-6 py-4 align-top">20.000đ</td>
+                                <td class="whitespace-nowrap px-2 sm:px-6 py-4 align-top">{{formatCurrency discountprice}}đ</td>
                                 <td class="whitespace-nowrap px-2 sm:px-6 py-4 align-top">
                                     <div>
-                                        <p>5</p>
+                                        <p>{{quantity}}</p>
                                     </div>
                                 </td>
-                                <td class="whitespace-nowrap px-2 sm:px-6 py-4 align-top text-base text-red-700">20.000đ</td>
+                                <td class="whitespace-nowrap px-2 sm:px-6 py-4 align-top text-base text-red-700">{{formatCurrency totalprice}}đ</td>
                             </tr>
+                            {{/each}}
                         </tbody>
                     </table>
                     <div class="p-4 border-t border-gray-300">
                         <p class="text-gray-500">Ghi chú</p>
-                        <p class="text-sm text-gray-500">Việt nam trong tôi là điều tuyệt vời nhất thế giới dù chỉ là 1 nước nhỏ</p>
+                        <p class="text-sm text-gray-500">{{note}}</p>
                     </div>
                 </div>
 
